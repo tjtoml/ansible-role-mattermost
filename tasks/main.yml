@@ -4,3 +4,6 @@
   template:
     src: mattermost.conf.j2
     dest: /etc/nginx/conf.d/mattermost.conf
+    
+
+# vim:ft=ansible
