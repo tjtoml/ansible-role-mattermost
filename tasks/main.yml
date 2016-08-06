@@ -7,15 +7,12 @@
     
 - name: config.json template
   template:
-    src: defaults.j2
+    src: config.yaml.j2
     dest: /tmp/config.yaml
 
 - name: convert config.yaml to config.json
-  command: "python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)' < /tmp/config.yaml > /opt/mattermost/config/config.json && touch /opt/mattermost/configlock.lockfile"
-  args:
-    creates: /opt/mattermost/configlock.lockfile
-
-
+  command: "python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)' < /tmp/config.yaml > /opt/mattermost/config/config.json"
+  when: overwrite_config_file
 
 
 
