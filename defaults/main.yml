@@ -1,2 +1,215 @@
 ---
 # defaults file for mattermost
+
+# High Level Vars
+
+mattermost_version: 3.2.0
+db_user: mmost
+db_name: mattermost
+db_password: notReallyASecurePassword
+cert_email_address: abc@123.com
+
+# MATTERMOST config.json SETTINGS
+
+# ComplianceSettings
+Compliance_Directory: ./data/
+Compliance_Enable: false
+Compliance_EnableDaily: false
+
+
+# EmailSettings:
+Email_ConnectionSecurity: ''
+Email_EnableSignInWithEmail: true
+Email_EnableSignInWithUsername: true
+Email_EnableSignUpWithEmail: true
+Email_FeedbackEmail: ''
+Email_FeedbackName: ''
+Email_FeedbackOrganization: ''
+Email_InviteSalt: bjlSR4QqkXFBr7TP4oDzlfZmcNuH9YoS
+Email_PasswordResetSalt: vZ4DcKyVVRlKHHJpexcuXzojkE5PZ5eL
+Email_PushNotificationContents: generic
+Email_PushNotificationServer: ''
+Email_RequireEmailVerification: false
+Email_SMTPPassword: ''
+Email_SMTPPort: ''
+Email_SMTPServer: ''
+Email_SMTPUsername: ''
+Email_SendEmailNotifications: false
+Email_SendPushNotifications: false
+
+# FileSettings
+File_AmazonS3AccessKeyId: ''
+File_AmazonS3Bucket: ''
+File_AmazonS3BucketEndpoint: ''
+File_AmazonS3Endpoint: ''
+File_AmazonS3LocationConstraint: false
+File_AmazonS3LowercaseBucket: false
+File_AmazonS3Region: ''
+File_AmazonS3SecretAccessKey: ''
+File_Directory: ./data/
+File_DriverName: local
+File_EnablePublicLink: false
+File_InitialFont: luximbi.ttf
+File_MaxFileSize: 52428800
+File_PreviewHeight: 0
+File_PreviewWidth: 1024
+File_ProfileHeight: 128
+File_ProfileWidth: 128
+File_PublicLinkSalt: A705AklYF8MFDOfcwh3I488G8vtLlVip
+File_ThumbnailHeight: 100
+File_ThumbnailWidth: 120
+
+
+## GitLabSettings:
+GitLab_AuthEndpoint: ''
+GitLab_Enable: false
+GitLab_Id: ''
+GitLab_Scope: ''
+GitLab_Secret: ''
+GitLab_TokenEndpoint: ''
+GitLab_UserApiEndpoint: ''
+
+##GoogleSettings:
+Google_AuthEndpoint: ''
+Google_Enable: false
+Google_Id: ''
+Google_Scope: ''
+Google_Secret: ''
+Google_TokenEndpoint: ''
+Google_UserApiEndpoint: ''
+
+  
+##LdapSettings:
+LDAP_BaseDN: ''
+LDAP_BindPassword: ''
+LDAP_BindUsername: ''
+LDAP_ConnectionSecurity: ''
+LDAP_EmailAttribute: ''
+LDAP_Enable: false
+LDAP_FirstNameAttribute: ''
+LDAP_IdAttribute: ''
+LDAP_LastNameAttribute: ''
+LDAP_LdapPort: 389
+LDAP_LdapServer: ''
+LDAP_LoginFieldName: ''
+LDAP_MaxPageSize: 0
+LDAP_NicknameAttribute: ''
+LDAP_QueryTimeout: 60
+LDAP_SkipCertificateVerification: false
+LDAP_SyncIntervalMinutes: 60
+LDAP_UserFilter: ''
+LDAP_UsernameAttribute: ''
+
+  
+##LocalizationSettings:
+Localization_AvailableLocales: ''
+Localization_DefaultClientLocale: en
+Localization_DefaultServerLocale: en
+
+## LogSettings:
+Log_ConsoleLevel: DEBUG
+Log_EnableConsole: true
+Log_EnableFile: true
+Log_EnableWebhookDebugging: true
+Log_FileFormat: ''
+Log_FileLevel: INFO
+Log_FileLocation: ''
+
+##PasswordSettings:
+Password_Lowercase: false
+Password_MinimumLength: 5
+Password_Number: false
+Password_Symbol: false
+Password_Uppercase: false
+
+##PrivacySettings:
+Privacy_ShowEmailAddress: true
+Privacy_ShowFullName: true
+
+##RateLimitSettings:
+RateLimit_EnableRateLimiter: true
+RateLimit_MemoryStoreSize: 10000
+RateLimit_PerSec: 10
+RateLimit_VaryByHeader: ''
+RateLimit_VaryByRemoteAddr: true
+
+##SamlSettings:
+Saml_AssertionConsumerServiceURL: ''
+Saml_EmailAttribute: ''
+Saml_Enable: false
+Saml_Encrypt: false
+Saml_FirstNameAttribute: ''
+Saml_IdpCertificateFile: ''
+Saml_IdpDescriptorUrl: ''
+Saml_IdpUrl: ''
+Saml_LastNameAttribute: ''
+Saml_LocaleAttribute: ''
+Saml_LoginButtonText: With SAML
+Saml_NicknameAttribute: ''
+Saml_PrivateKeyFile: ''
+Saml_PublicCertificateFile: ''
+Saml_UsernameAttribute: ''
+Saml_Verify: false
+
+  
+##ServiceSettings:
+Service_AllowCorsFrom: ''
+Service_EnableCommands: true
+Service_EnableCustomEmoji: false
+Service_EnableDeveloper: false
+Service_EnableIncomingWebhooks: true
+Service_EnableInsecureOutgoingConnections: false
+Service_EnableMultifactorAuthentication: false
+Service_EnableOAuthServiceProvider: false
+Service_EnableOnlyAdminIntegrations: true
+Service_EnableOutgoingWebhooks: true
+Service_EnablePostIconOverride: false
+Service_EnablePostUsernameOverride: false
+Service_EnableSecurityFixAlert: true
+Service_EnableTesting: false
+Service_GoogleDeveloperKey: ''
+Service_ListenAddress: :8065
+Service_MaximumLoginAttempts: 10
+Service_RestrictCustomEmojiCreation: all
+Service_SegmentDeveloperKey: ''
+Service_SessionCacheInMinutes: 10
+Service_SessionLengthMobileInDays: 30
+Service_SessionLengthSSOInDays: 30
+Service_SessionLengthWebInDays: 30
+Service_WebserverMode: gzip
+Service_WebsocketPort: 80
+Service_WebsocketSecurePort: 443
+
+##SqlSettings:
+SQL_AtRestEncryptKey: 7rAh6iwQCkV4cA1Gsg3fgGOXJAQ43QVg
+#SQL_DataSource: postgres://mmmost:notReallyPassword@127.0.0.1:5432/mattermost?sslmode=disable&connect_timeout=10
+SQL_DataSourceReplicas: []
+SQL_DriverName: postgres
+SQL_MaxIdleConns: 10
+SQL_MaxOpenConns: 10
+SQL_Trace: false
+
+## SupportSettings:
+Support_AboutLink: 'https://about.mattermost.com/default-about/'
+Support_HelpLink: 'https://about.mattermost.com/default-help/'
+Support_PrivacyPolicyLink: 'https://about.mattermost.com/default-privacy-policy/'
+Support_ReportAProblemLink: 'https://about.mattermost.com/default-report-a-problem/'
+Support_SupportEmail: feedback@mattermost.com
+Support_TermsOfServiceLink: 'https://about.mattermost.com/default-terms/'
+
+## TeamSettings:
+Team_CustomBrandText: ''
+Team_EnableCustomBrand: false
+Team_EnableOpenServer: false
+Team_EnableTeamCreation: true
+Team_EnableUserCreation: true
+Team_MaxUsersPerTeam: 50
+Team_RestrictCreationToDomains: ''
+Team_RestrictDirectMessage: any
+Team_RestrictPrivateChannelManagement: all
+Team_RestrictPublicChannelManagement: all
+Team_RestrictTeamInvite: all
+Team_RestrictTeamNames: true
+Team_SiteName: Mattermost
+
+# vim:ft=ansible

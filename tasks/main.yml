@@ -5,5 +5,23 @@
     src: mattermost.conf.j2
     dest: /etc/nginx/conf.d/mattermost.conf
     
+- name: config.json template
+  template:
+    src: defaults.j2
+    dest: /tmp/config.yaml
 
-# vim:ft=ansible
+- name: convert config.yaml to config.json
+  command: "python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)' < /tmp/config.yaml > /opt/mattermost/config/config.json && touch /opt/mattermost/configlock.lockfile"
+  args:
+    creates: /opt/mattermost/configlock.lockfile
+
+
+
+
+
+
+
+
+
+
+# vim:ft=ansible:

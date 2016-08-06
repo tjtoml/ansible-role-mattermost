@@ -1,0 +1,183 @@
+ComplianceSettings:
+  Directory: {{ Compliance_Directory }}
+  Enable: {{ Compliance_Enable }}
+  EnableDaily: {{ Compliance_EnableDaily }}
+EmailSettings:
+  ConnectionSecurity: {{ Email_ConnectionSecurity }}
+  EnableSignInWithEmail: {{ Email_EnableSignInWithEmail }}
+  EnableSignInWithUsername: {{ Email_EnableSignInWithUsername }}
+  EnableSignUpWithEmail: {{ Email_EnableSignUpWithEmail }}
+  FeedbackEmail: {{ Email_FeedbackEmail }}
+  FeedbackName: {{ Email_FeedbackName }}
+  FeedbackOrganization: {{ Email_FeedbackOrganization }}
+  InviteSalt: {{ Email_InviteSalt }}
+  PasswordResetSalt: {{ Email_PasswordResetSalt }}
+  PushNotificationContents: {{ Email_PushNotificationContents }}
+  PushNotificationServer: {{ Email_PushNotificationServer }}
+  RequireEmailVerification: {{ Email_RequireEmailVerification }}
+  SMTPPassword: {{ Email_SMTPPassword }}
+  SMTPPort: {{ Email_SMTPPort }}
+  SMTPServer: {{ Email_SMTPServer }}
+  SMTPUsername: {{ Email_SMTPUsername }}
+  SendEmailNotifications: {{ Email_SendEmailNotifications }}
+  SendPushNotifications: {{ Email_SendPushNotifications }}
+FileSettings:
+  AmazonS3AccessKeyId: {{ File_AmazonS3AccessKeyId }}
+  AmazonS3Bucket: {{ File_AmazonS3Bucket }}
+  AmazonS3BucketEndpoint: {{ File_AmazonS3BucketEndpoint }}
+  AmazonS3Endpoint: {{ File_AmazonS3Endpoint }}
+  AmazonS3LocationConstraint: {{ File_AmazonS3LocationConstraint }}
+  AmazonS3LowercaseBucket: {{ File_AmazonS3LowercaseBucket }}
+  AmazonS3Region: {{ File_AmazonS3Region }}
+  AmazonS3SecretAccessKey: {{ File_AmazonS3SecretAccessKey }}
+  Directory: {{ File_Directory }}
+  DriverName: {{ File_DriverName }}
+  EnablePublicLink: {{ File_EnablePublicLink }}
+  InitialFont: {{ File_InitialFont }}
+  MaxFileSize: {{ File_MaxFileSize }}
+  PreviewHeight: {{ File_PreviewHeight }}
+  PreviewWidth: {{ File_PreviewWidth }}
+  ProfileHeight: {{ File_ProfileHeight }}
+  ProfileWidth: {{ File_ProfileWidth }}
+  PublicLinkSalt: {{ File_PublicLinkSalt }}
+  ThumbnailHeight: {{ File_ThumbnailHeight }}
+  ThumbnailWidth: {{ File_ThumbnailWidth }}
+GitLabSettings:
+  AuthEndpoint: {{ GitLab_AuthEndpoint }}
+  Enable: {{ GitLab_Enable }}
+  Id: {{ GitLab_Id }}
+  Scope: {{ GitLab_Scope }}
+  Secret: {{ GitLab_Secret }}
+  TokenEndpoint: {{ GitLab_TokenEndpoint }}
+  UserApiEndpoint: {{ GitLab_UserApiEndpoint }}
+GoogleSettings:
+  AuthEndpoint: {{ Google_AuthEndpoint }}
+  Enable: {{ Google_Enable }}
+  Id: {{ Google_Id }}
+  Scope: {{ Google_Scope }}
+  Secret: {{ Google_Secret }}
+  TokenEndpoint: {{ Google_TokenEndpoint }}
+  UserApiEndpoint: {{ Google_UserApiEndpoint }}
+LdapSettings:
+  BaseDN: {{ LDAP_BaseDN }}
+  BindPassword: {{ LDAP_BindPassword }}
+  BindUsername: {{ LDAP_BindUsername }}
+  ConnectionSecurity: {{ LDAP_ConnectionSecurity }}
+  EmailAttribute: {{ LDAP_EmailAttribute }}
+  Enable: {{ LDAP_Enable }}
+  FirstNameAttribute: {{ LDAP_FirstNameAttribute }}
+  IdAttribute: {{ LDAP_IdAttribute }}
+  LastNameAttribute: {{ LDAP_LastNameAttribute }}
+  LdapPort: {{ LDAP_LdapPort }}
+  LdapServer: {{ LDAP_LdapServer }}
+  LoginFieldName: {{ LDAP_LoginFieldName }}
+  MaxPageSize: {{ LDAP_MaxPageSize }}
+  NicknameAttribute: {{ LDAP_NicknameAttribute }}
+  QueryTimeout: {{ LDAP_QueryTimeout }}
+  SkipCertificateVerification: {{ LDAP_SkipCertificateVerification }}
+  SyncIntervalMinutes: {{ LDAP_SyncIntervalMinutes }}
+  UserFilter: {{ LDAP_UserFilter }}
+  UsernameAttribute: {{ LDAP_UsernameAttribute }}
+LocalizationSettings:
+  AvailableLocales: {{ Localization_AvailableLocales }}
+  DefaultClientLocale: {{ Localization_DefaultClientLocale }}
+  DefaultServerLocale: {{ Localization_DefaultServerLocale }}
+LogSettings:
+  ConsoleLevel: {{ Log_ConsoleLevel }}
+  EnableConsole: {{ Log_EnableConsole }}
+  EnableFile: {{ Log_EnableFile }}
+  EnableWebhookDebugging: {{ Log_EnableWebhookDebugging }}
+  FileFormat: {{ Log_FileFormat }}
+  FileLevel: {{ Log_FileLevel }}
+  FileLocation: {{ Log_FileLocation }}
+PasswordSettings:
+  Lowercase: {{ Password_Lowercase }}
+  MinimumLength: {{ Password_MinimumLength }}
+  Number: {{ Password_Number }}
+  Symbol: {{ Password_Symbol }}
+  Uppercase: {{ Password_Uppercase }}
+PrivacySettings:
+  ShowEmailAddress: {{ Privacy_ShowEmailAddress }}
+  ShowFullName: {{ Privacy_ShowFullName }}
+RateLimitSettings:
+  EnableRateLimiter: {{ RateLimit_EnableRateLimiter }}
+  MemoryStoreSize: {{ RateLimit_MemoryStoreSize }}
+  PerSec: {{ RateLimit_PerSec }}
+  VaryByHeader: {{ RateLimit_VaryByHeader }}
+  VaryByRemoteAddr: {{ RateLimit_VaryByRemoteAddr }}
+SamlSettings:
+  AssertionConsumerServiceURL: {{ Saml_AssertionConsumerServiceURL }}
+  EmailAttribute: {{ Saml_EmailAttribute }}
+  Enable: {{ Saml_Enable }}
+  Encrypt: {{ Saml_Encrypt }}
+  FirstNameAttribute: {{ Saml_FirstNameAttribute }}
+  IdpCertificateFile: {{ Saml_IdpCertificateFile }}
+  IdpDescriptorUrl: {{ Saml_IdpDescriptorUrl }}
+  IdpUrl: {{ Saml_IdpUrl }}
+  LastNameAttribute: {{ Saml_LastNameAttribute }}
+  LocaleAttribute: {{ Saml_LocaleAttribute }}
+  LoginButtonText: {{ Saml_LoginButtonText }}
+  NicknameAttribute: {{ Saml_NicknameAttribute }}
+  PrivateKeyFile: {{ Saml_PrivateKeyFile }}
+  PublicCertificateFile: {{ Saml_PublicCertificateFile }}
+  UsernameAttribute: {{ Saml_UsernameAttribute }}
+  Verify: {{ Saml_Verify }}
+ServiceSettings:
+  AllowCorsFrom: {{ Service_AllowCorsFrom }}
+  EnableCommands: {{ Service_EnableCommands }}
+  EnableCustomEmoji: {{ Service_EnableCustomEmoji }}
+  EnableDeveloper: {{ Service_EnableDeveloper }}
+  EnableIncomingWebhooks: {{ Service_EnableIncomingWebhooks }}
+  EnableInsecureOutgoingConnections: {{ Service_EnableInsecureOutgoingConnections }}
+  EnableMultifactorAuthentication: {{ Service_EnableMultifactorAuthentication }}
+  EnableOAuthServiceProvider: {{ Service_EnableOAuthServiceProvider }}
+  EnableOnlyAdminIntegrations: {{ Service_EnableOnlyAdminIntegrations }}
+  EnableOutgoingWebhooks: {{ Service_EnableOutgoingWebhooks }}
+  EnablePostIconOverride: {{ Service_EnablePostIconOverride }}
+  EnablePostUsernameOverride: {{ Service_EnablePostUsernameOverride }}
+  EnableSecurityFixAlert: {{ Service_EnableSecurityFixAlert }}
+  EnableTesting: {{ Service_EnableTesting }}
+  GoogleDeveloperKey: {{ Service_GoogleDeveloperKey }}
+  ListenAddress: {{ Service_ListenAddress }}
+  MaximumLoginAttempts: {{ Service_MaximumLoginAttempts }}
+  RestrictCustomEmojiCreation: {{ Service_RestrictCustomEmojiCreation }}
+  SegmentDeveloperKey: {{ Service_SegmentDeveloperKey }}
+  SessionCacheInMinutes: {{ Service_SessionCacheInMinutes }}
+  SessionLengthMobileInDays: {{ Service_SessionLengthMobileInDays }}
+  SessionLengthSSOInDays: {{ Service_SessionLengthSSOInDays }}
+  SessionLengthWebInDays: {{ Service_SessionLengthWebInDays }}
+  WebserverMode: {{ Service_WebserverMode }}
+  WebsocketPort: {{ Service_WebsocketPort }}
+  WebsocketSecurePort: {{ Service_WebsocketSecurePort }}
+SqlSettings:
+  AtRestEncryptKey: {{ SQL_AtRestEncryptKey }}
+  DataSource: 'postgres://{{ db_user }}:{{ db_password }}@127.0.0.1:5432/{{ db_name}}?sslmode=disable&connect_timeout=10'
+
+  DataSourceReplicas: {{ SQL_DataSourceReplicas }}
+  DriverName: {{ SQL_DriverName }}
+  MaxIdleConns: {{ SQL_MaxIdleConns }}
+  MaxOpenConns: {{ SQL_MaxOpenConns }}
+  Trace: {{ SQL_Trace }}
+SupportSettings:
+  AboutLink: {{ Support_AboutLink }}
+  HelpLink: {{ Support_HelpLink }}
+  PrivacyPolicyLink: {{ Support_PrivacyPolicyLink }}
+  ReportAProblemLink: {{ Support_ReportAProblemLink }}
+  SupportEmail: {{ Support_SupportEmail }}
+  TermsOfServiceLink: {{ Support_TermsOfServiceLink }}
+TeamSettings:
+  CustomBrandText: {{ Team_CustomBrandText }}
+  EnableCustomBrand: {{ Team_EnableCustomBrand }}
+  EnableOpenServer: {{ Team_EnableOpenServer }}
+  EnableTeamCreation: {{ Team_EnableTeamCreation }}
+  EnableUserCreation: {{ Team_EnableUserCreation }}
+  MaxUsersPerTeam: {{ Team_MaxUsersPerTeam }}
+  RestrictCreationToDomains: {{ Team_RestrictCreationToDomains }}
+  RestrictDirectMessage: {{ Team_RestrictDirectMessage }}
+  RestrictPrivateChannelManagement: {{ Team_RestrictPrivateChannelManagement }}
+  RestrictPublicChannelManagement: {{ Team_RestrictPublicChannelManagement }}
+  RestrictTeamInvite: {{ Team_RestrictTeamInvite }}
+  RestrictTeamNames: {{ Team_RestrictTeamNames }}
+  SiteName: {{ Team_SiteName }}
+
+# vim:ft=ansible
