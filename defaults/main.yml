@@ -8,6 +8,12 @@ db_user: mmost
 db_name: mattermost
 db_password: notReallyASecurePassword
 cert_email_address: abc@123.com
+mattermost_user: mattermost
+overwrite_config_file: true
+
+
+## Type of SSL you want. Acceptable values are: letsencrypt, snakeoil, none
+SSL_type: letsencrypt
 
 # MATTERMOST config.json SETTINGS
 

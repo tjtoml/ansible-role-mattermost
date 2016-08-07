@@ -1,0 +1,32 @@
+---
+
+- name: Apply nginx template for mattermost. (SSL Certs provided by letsencrypt)
+  template:
+    src: nginx/letsencrypt-mattermost.conf.j2
+    dest: /etc/nginx/conf.d/mattermost.conf
+  when: SSL_type == "letsencrypt"
+
+- name: Apply nginx template for mattermost. (No SSL)
+  template:
+    src: nginx/nossl-mattermost.conf.j2
+    dest: /etc/nginx/conf.d/mattermost.conf
+  when: SSL_type == "none"
+
+- name: Add SSL directory in /etc/nginx
+  file:
+    path: /etc/nginx/ssl
+    state: directory
+  when: SSL_type == "snakeoil"
+
+- name: create self-signed SSL cert
+  command: openssl req -new -nodes -x509 -subj "/C=US/ST=Oregon/L=Portland/O=IT/CN={{ ansible_fqdn }}" -days 3650 -keyout /etc/nginx/ssl/mattermost.key -out /etc/nginx/ssl/mattermost.crt -extensions v3_ca 
+  args:
+    creates: /etc/nginx/ssl/mattermost.crt
+  when: SSL_type == "snakeoil"
+
+- name: Apply nginx template for mattermost. (Snakeoil)
+  template:
+    src: nginx/snakeoil-mattermost.conf.j2
+    dest: /etc/nginx/conf.d/mattermost.conf
+  when: SSL_type == "snakeoil"
+# vim:ft=ansible

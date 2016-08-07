@@ -1,9 +1,14 @@
 ---
 # tasks file for mattermost
-- name: Apply nginx template for mattermost.
-  template:
-    src: mattermost.conf.j2
-    dest: /etc/nginx/conf.d/mattermost.conf
+- include: letsencrypt.yml
+  when: SSL_type == 'letsencrypt'
+
+- include: nginx.yml
+
+- include: postgres.yml
+
+- include: cron.yml
+  when: SSL_type == 'letsencrypt'
 
 - name: 'Download binary from https://releases.mattermost.org'
   get_url: 
@@ -16,7 +21,7 @@
   args:        
     chdir: /tmp/
     creates: /tmp/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz
-  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version == "6") or (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "14")
+  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version == "6") or (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "14") or (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "12")
 
 - name: Unpack mattermost archive.
   unarchive: 
@@ -38,9 +43,18 @@
     state: absent
   when: overwrite_config_file
 
+# because the fucking command module doesn't work for some reason
+- name: Copy yaml2json script 
+  copy:
+    src: yaml2json.sh
+    dest: /tmp/yaml2json.sh
+    mode: 0777
+
 - name: Convert config.yaml to config.json.
-  command: "python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)' < /tmp/config.yaml > /opt/mattermost/config/config.json"
+  command: sh /tmp/yaml2json.sh 
   when: overwrite_config_file
+  args:
+    creates: /opt/mattermost/config/config.json
 
 - name: Create user to run mattermost service. ({{ mattermost_user }})
   user: 
@@ -50,7 +64,7 @@
 
 - name: Create mattermost SystemV init script (Ubuntu 14.04)
   template:
-    src: init_script_ubuntu.j2
+    src: init/init_script_ubuntu.j2
     dest: /etc/init.d/mattermost
     owner: root
     group: root
@@ -59,7 +73,7 @@
 
 - name: Create mattermost upstart init script (RHEL/CentOS 6)
   template:
-    src: mattermost.conf.j2
+    src: init/mattermost.conf.j2
     dest: /etc/init/mattermost.conf
     owner: root
     group: root
@@ -68,7 +82,7 @@
 
 - name: Create mattermost systemd service (Ubuntu 16.04, RHEL/CentOS 7)
   template:
-    src: mattermost.service.j2
+    src: init/mattermost.service.j2
     dest: /etc/systemd/system/mattermost.service
     owner: root
     group: root
@@ -88,10 +102,6 @@
     name: mattermost
     enabled: yes
     state: started
-
-
-
-
 
 
 # vim:ft=ansible:

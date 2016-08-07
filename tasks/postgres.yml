@@ -1,0 +1,33 @@
+---
+- name: ensure database is created
+  become: true
+  become_user: postgres
+  postgresql_db:
+    name: "{{ db_name }}"
+
+- name: ensure user has access to database
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    db: "{{ db_name }}"
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
+    priv: ALL
+
+- name: ensure user does not have unnecessary privilege
+  become: yes
+  become_user: postgres
+  postgresql_user: 
+    name: "{{ db_user }}"
+    role_attr_flags: NOSUPERUSER,NOCREATEDB
+
+- name: Change postgres pg_hba.conf to allow password connections from localhost
+  lineinfile:
+    dest: /var/lib/pgsql/{{ postgres_version }}/data/pg_hba.conf
+    regexp: 'host    all             all             127.0.0.1/32            ident'
+    line: 'host    all             all             127.0.0.1/32            password'
+    backrefs: yes
+    backup: yes
+  notify: restart postgres
+  when: ansible_os_family == "RedHat"
+# vim:ft=ansible:
