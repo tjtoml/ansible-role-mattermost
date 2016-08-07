@@ -188,7 +188,6 @@ Service_WebsocketSecurePort: 443
 
 ##SqlSettings:
 SQL_AtRestEncryptKey: 7rAh6iwQCkV4cA1Gsg3fgGOXJAQ43QVg
-#SQL_DataSource: postgres://mmmost:notReallyPassword@127.0.0.1:5432/mattermost?sslmode=disable&connect_timeout=10
 SQL_DataSourceReplicas: []
 SQL_DriverName: postgres
 SQL_MaxIdleConns: 10
