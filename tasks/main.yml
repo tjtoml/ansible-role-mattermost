@@ -1,20 +1,93 @@
 ---
 # tasks file for mattermost
-- name: apply nginx template
+- name: Apply nginx template for mattermost.
   template:
     src: mattermost.conf.j2
     dest: /etc/nginx/conf.d/mattermost.conf
-    
-- name: config.json template
+
+- name: 'Download binary from https://releases.mattermost.org'
+  get_url: 
+    url: 'https://releases.mattermost.com/{{ mattermost_version }}/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz'
+    dest: /tmp/
+  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version == "7") or (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "16")
+
+- name: Download binary from MatterMost website (using wget because get_url fails if system python is older than 2.7.5)
+  command: "wget https://releases.mattermost.com/{{ mattermost_version }}/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz"
+  args:        
+    chdir: /tmp/
+    creates: /tmp/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz
+  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version == "6") or (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "14")
+
+- name: Unpack mattermost archive.
+  unarchive: 
+    src: /tmp/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz 
+    dest: /opt/
+    copy: no
+  args:
+    creates: /opt/mattermost/bin/platform
+   
+- name: Create config.yaml from default and user-defined variables.
   template:
     src: config.yaml.j2
     dest: /tmp/config.yaml
+  when: overwrite_config_file
 
-- name: convert config.yaml to config.json
+- name: Delete default MatterMost config.json
+  file:
+    path: /opt/mattermost/config/config.json
+    state: absent
+  when: overwrite_config_file
+
+- name: Convert config.yaml to config.json.
   command: "python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)' < /tmp/config.yaml > /opt/mattermost/config/config.json"
   when: overwrite_config_file
 
+- name: Create user to run mattermost service. ({{ mattermost_user }})
+  user: 
+    name: "{{ mattermost_user }}"
+    system: yes
+    createhome: no        
 
+- name: Create mattermost SystemV init script (Ubuntu 14.04)
+  template:
+    src: init_script_ubuntu.j2
+    dest: /etc/init.d/mattermost
+    owner: root
+    group: root
+    mode: 0755
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "14")  
+
+- name: Create mattermost upstart init script (RHEL/CentOS 6)
+  template:
+    src: mattermost.conf.j2
+    dest: /etc/init/mattermost.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version == "6")  
+
+- name: Create mattermost systemd service (Ubuntu 16.04, RHEL/CentOS 7)
+  template:
+    src: mattermost.service.j2
+    dest: /etc/systemd/system/mattermost.service
+    owner: root
+    group: root
+    mode: 0664
+  when: (ansible_os_family  == "RedHat" and ansible_distribution_major_version == "7") or (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "16")  
+
+- name: Change mattermost directory permissions
+  file:
+    path: /opt/mattermost
+    state: directory
+    owner: "{{ mattermost_user }}"
+    group: "{{ mattermost_user }}"
+    recurse: yes
+
+- name: Enable Mattermost service
+  service:
+    name: mattermost
+    enabled: yes
+    state: started
 
 
 
