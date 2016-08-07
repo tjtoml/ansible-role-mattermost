@@ -10,7 +10,7 @@ db_password: notReallyASecurePassword
 cert_email_address: abc@123.com
 mattermost_user: mattermost
 overwrite_config_file: true
-
+postgres_version: 9.4
 
 ## Type of SSL you want. Acceptable values are: letsencrypt, snakeoil, none
 SSL_type: letsencrypt
