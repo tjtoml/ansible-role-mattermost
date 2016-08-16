@@ -1,7 +1,7 @@
 Role Name
 =========
 
-Installs mattermost
+Installs mattermost.
 
 Requirements
 ------------
