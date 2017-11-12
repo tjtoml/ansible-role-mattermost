@@ -1,4 +1,13 @@
 ---
+- name: Delete default nginx config directory
+  file:
+    path: /etc/nginx/sites-available
+    state: absent
+ 
+- name: Delete default nginx config directory
+  file:
+    path: /etc/nginx/sites-enabled
+    state: absent
 
 - name: Apply nginx template for mattermost. (SSL Certs provided by letsencrypt)
   template:

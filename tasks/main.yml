@@ -50,6 +50,15 @@
     dest: /tmp/yaml2json.sh
     mode: 0777
 
+- name: Install pip
+  package:
+    name: python-pip
+    state: present
+
+- name: Install pyYAML
+  pip:
+    name: pyYAML
+
 - name: Convert config.yaml to config.json.
   command: sh /tmp/yaml2json.sh 
   when: overwrite_config_file

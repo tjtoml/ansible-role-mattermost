@@ -1,9 +1,9 @@
 # vim:ft=ansible:
 ---
-- name: Create letsencrypt config file /opt/letsencrypt/cli.ini
+- name: Create letsencrypt config file /etc/letsencrypt.ini
   template: 
     src: letsencrypt/cli.ini.j2
-    dest: /opt/letsencrypt/cli.ini
+    dest: /etc/letsencrypt.ini
 
 - name: Let https through firewall (RHEL 7)
   firewalld:
@@ -40,7 +40,7 @@
   when: cert_present.stat.exists == false
 
 - name: Get SSL certificate from letsencrypt
-  command: /opt/letsencrypt/letsencrypt-auto certonly -c /opt/letsencrypt/cli.ini --agree-tos
+  command: letsencrypt certonly -c /etc/letsencrypt.ini --agree-tos
   args:
     creates: /etc/letsencrypt/live/{{ ansible_fqdn }}/fullchain.pem
   notify: restart nginx
