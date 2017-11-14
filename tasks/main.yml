@@ -1,27 +1,12 @@
 ---
-# tasks file for mattermost
-- include: letsencrypt.yml
-  when: SSL_type == 'letsencrypt'
+- include_tasks: nginx.yml
 
-- include: nginx.yml
-
-- include: postgres.yml
-
-- include: cron.yml
-  when: SSL_type == 'letsencrypt'
+- include_tasks: postgres.yml
 
 - name: 'Download binary from https://releases.mattermost.org'
   get_url: 
     url: 'https://releases.mattermost.com/{{ mattermost_version }}/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz'
     dest: /tmp/
-  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version == "7") or (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "16")
-
-- name: Download binary from MatterMost website (using wget because get_url fails if system python is older than 2.7.5)
-  command: "wget https://releases.mattermost.com/{{ mattermost_version }}/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz"
-  args:        
-    chdir: /tmp/
-    creates: /tmp/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz
-  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version == "6") or (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "14") or (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "12")
 
 - name: Unpack mattermost archive.
   unarchive: 
@@ -30,73 +15,34 @@
     copy: no
   args:
     creates: /opt/mattermost/bin/platform
-   
-- name: Create config.yaml from default and user-defined variables.
-  template:
-    src: config.yaml.j2
-    dest: /tmp/config.yaml
-  when: overwrite_config_file
 
-- name: Delete default MatterMost config.json
-  file:
-    path: /opt/mattermost/config/config.json
-    state: absent
-  when: overwrite_config_file
+- name: Edit /opt/mattermost/config/config.json
+  lineinfile:
+    dest: /opt/mattermost/config/config.json
+    regexp: '"DriverName": "mysql",'
+    line: '        "DriverName": "postgres",'
+    backrefs: yes
 
-# because the fucking command module doesn't work for some reason
-- name: Copy yaml2json script 
-  copy:
-    src: yaml2json.sh
-    dest: /tmp/yaml2json.sh
-    mode: 0777
-
-- name: Install pip
-  package:
-    name: python-pip
-    state: present
-
-- name: Install pyYAML
-  pip:
-    name: pyYAML
-
-- name: Convert config.yaml to config.json.
-  command: sh /tmp/yaml2json.sh 
-  when: overwrite_config_file
-  args:
-    creates: /opt/mattermost/config/config.json
-
+- name: Edit /opt/mattermost/config/config.json
+  lineinfile:
+    dest: /opt/mattermost/config/config.json
+    regexp: '"DataSource":'
+    line: '        "DataSource": "postgres://{{ db_user }}:{{ db_password }}@127.0.0.1:5432/{{ db_name }}?sslmode=disable&connect_timeout=10",'
+    backrefs: yes 
+  
 - name: Create user to run mattermost service. ({{ mattermost_user }})
   user: 
     name: "{{ mattermost_user }}"
     system: yes
     createhome: no        
 
-- name: Create mattermost SystemV init script (Ubuntu 14.04)
-  template:
-    src: init/init_script_ubuntu.j2
-    dest: /etc/init.d/mattermost
-    owner: root
-    group: root
-    mode: 0755
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "14")  
-
-- name: Create mattermost upstart init script (RHEL/CentOS 6)
-  template:
-    src: init/mattermost.conf.j2
-    dest: /etc/init/mattermost.conf
-    owner: root
-    group: root
-    mode: 0644
-  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version == "6")  
-
-- name: Create mattermost systemd service (Ubuntu 16.04, RHEL/CentOS 7)
+- name: Create mattermost systemd service
   template:
     src: init/mattermost.service.j2
     dest: /etc/systemd/system/mattermost.service
     owner: root
     group: root
     mode: 0664
-  when: (ansible_os_family  == "RedHat" and ansible_distribution_major_version == "7") or (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "16")  
 
 - name: Change mattermost directory permissions
   file:
@@ -110,7 +56,7 @@
   service:
     name: mattermost
     enabled: yes
-    state: started
+    state: started 
 
-
+#include_tasks: "{{ ansible_distribution }}/{{ ansible_distribution_major_version }}/main.yml"
 # vim:ft=ansible:
