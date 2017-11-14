@@ -1,0 +1,9 @@
+---
+- name: Create mattermost upstart init script
+  template:
+    src: init/upstart.j2
+    dest: /etc/init/mattermost.conf
+    owner: root
+    group: root
+    mode: 0644
+# vim:ft=ansible:

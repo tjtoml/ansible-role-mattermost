@@ -1,4 +1,7 @@
 ---
+- name: Load distro-specific vars
+  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+
 - include_tasks: nginx.yml
 
 - include_tasks: postgres.yml
@@ -7,6 +10,14 @@
   get_url: 
     url: 'https://releases.mattermost.com/{{ mattermost_version }}/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz'
     dest: /tmp/
+  when: use_get_url
+
+- name: Download binary from MatterMost website (using wget because get_url fails if system python is older than 2.7.5)
+  command: "wget https://releases.mattermost.com/{{ mattermost_version }}/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz"
+  args:        
+    chdir: /tmp/
+    creates: /tmp/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz
+  when: not use_get_url
 
 - name: Unpack mattermost archive.
   unarchive: 
@@ -36,14 +47,6 @@
     system: yes
     createhome: no        
 
-- name: Create mattermost systemd service
-  template:
-    src: init/mattermost.service.j2
-    dest: /etc/systemd/system/mattermost.service
-    owner: root
-    group: root
-    mode: 0664
-
 - name: Change mattermost directory permissions
   file:
     path: /opt/mattermost
@@ -51,6 +54,8 @@
     owner: "{{ mattermost_user }}"
     group: "{{ mattermost_user }}"
     recurse: yes
+
+- include_tasks: "init/{{ init_system }}.yml"
 
 - name: Enable Mattermost service
   service:

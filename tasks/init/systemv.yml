@@ -1,0 +1,9 @@
+---
+- name: Create mattermost SystemV init script
+  template:
+    src: init/systemv.j2
+    dest: /etc/init.d/mattermost
+    owner: root
+    group: root
+    mode: 0755
+# vim:ft=ansible:

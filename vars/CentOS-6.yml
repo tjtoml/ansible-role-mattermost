@@ -1,0 +1,5 @@
+
+---
+init_system: upstart 
+use_get_url: false
+#vim:ft=ansible:

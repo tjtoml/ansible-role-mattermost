@@ -1,0 +1,4 @@
+---
+init_system: systemd
+use_get_url: true
+#vim:ft=ansible:
