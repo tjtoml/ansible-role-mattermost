@@ -16,7 +16,7 @@
   when: cert_present.stat.exists == false
 
 - name: Get SSL certificate from letsencrypt
-  command: letsencrypt certonly -c /etc/letsencrypt.ini --agree-tos
+  command: letsencrypt certonly -c /etc/letsencrypt.ini -n --agree-tos 
   args:
     creates: /etc/letsencrypt/live/{{ ansible_fqdn }}/fullchain.pem
   notify: restart nginx
