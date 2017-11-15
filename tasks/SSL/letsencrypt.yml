@@ -20,6 +20,15 @@
   args:
     creates: /etc/letsencrypt/live/{{ ansible_fqdn }}/fullchain.pem
   notify: restart nginx
+  when: not certbot_manual
+
+- name: Get SSL certificate from letsencrypt
+  command: /opt/certbot/certbot-auto certonly -c /etc/letsencrypt.ini -n --agree-tos 
+  args:
+    chdir: /opt/certbot/
+    creates: /etc/letsencrypt/live/{{ ansible_fqdn }}/fullchain.pem
+  notify: restart nginx
+  when: certbot_manual
 
 - name: Create cron job to automatically update SSL cert (non-systemd)
   cron:

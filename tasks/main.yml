@@ -17,6 +17,7 @@
   args:        
     chdir: /tmp/
     creates: /tmp/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz
+    warn: false
   when: not use_get_url
 
 - name: Unpack mattermost archive.
