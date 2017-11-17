@@ -271,6 +271,10 @@ Saml_LocaleAttribute: ""
 Saml_PositionAttribute: ""
 Saml_LoginButtonText: "With SAML"
 
+NativeApp_AppDownloadLink: "https://about.mattermost.com/downloads/"
+NativeApp_AndroidAppDownloadLink: "https://about.mattermost.com/mattermost-android-app/"
+NativeApp_IosAppDownloadLink: "https://about.mattermost.com/mattermost-ios-app/"
+
 Cluster_Enable: false
 Cluster_ClusterName: ""
 Cluster_OverrideHostname: ""
@@ -284,7 +288,7 @@ Metrics_Enable: false
 Metrics_BlockProfileRate: 0
 Metrics_ListenAddress: ":8067"
 
-Analytic_MaxUsersForStatistics: 2500
+Analytics_MaxUsersForStatistics: 2500
 
 Webrtc_Enable: false
 Webrtc_GatewayWebsocketUrl: ""
