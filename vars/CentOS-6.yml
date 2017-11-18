@@ -2,4 +2,5 @@
 ---
 init_system: upstart 
 use_get_url: false
+certbot_manual: true
 #vim:ft=ansible:
