@@ -9,7 +9,7 @@ db_name: mattermost
 db_password: notReallyASecurePassword
 cert_email_address: abc@123.com
 mattermost_user: mattermost
-overwrite_config_file: true
+overwrite_config_file: "true"
 postgres_version: 9.4
 
 ## Type of SSL you want. Acceptable values are: letsencrypt, snakeoil, none
@@ -23,31 +23,31 @@ Service_ListenAddress: ":8065"
 Service_ConnectionSecurity: ""
 Service_TLSCertFile: ""
 Service_TLSKeyFile: ""
-Service_UseLetsEncrypt: false
+Service_UseLetsEncrypt: "false"
 Service_LetsEncryptCertificateCacheFile: "./config/letsencrypt.cache"
-Service_Forward80To443: false
+Service_Forward80To443: "false"
 Service_ReadTimeout: 300
 Service_WriteTimeout: 300
 Service_MaximumLoginAttempts: 10
 Service_GoroutineHealthThreshold: -1
 Service_GoogleDeveloperKey: ""
-Service_EnableOAuthServiceProvider: false
-Service_EnableIncomingWebhooks: true
-Service_EnableOutgoingWebhooks: true
-Service_EnableCommands: true
-Service_EnableOnlyAdminIntegrations: true
-Service_EnablePostUsernameOverride: false
-Service_EnablePostIconOverride: false
-Service_EnableAPIv3: true
-Service_EnableLinkPreviews: false
-Service_EnableTesting: false
-Service_EnableDeveloper: false
-Service_EnableSecurityFixAlert: true
-Service_EnableInsecureOutgoingConnections: false
+Service_EnableOAuthServiceProvider: "false"
+Service_EnableIncomingWebhooks: "true"
+Service_EnableOutgoingWebhooks: "true"
+Service_EnableCommands: "true"
+Service_EnableOnlyAdminIntegrations: "true"
+Service_EnablePostUsernameOverride: "false"
+Service_EnablePostIconOverride: "false"
+Service_EnableAPIv3: "true"
+Service_EnableLinkPreviews: "false"
+Service_EnableTesting: "false"
+Service_EnableDeveloper: "false"
+Service_EnableSecurityFixAlert: "true"
+Service_EnableInsecureOutgoingConnections: "false"
 Service_AllowedUntrustedInternalConnections: ""
-Service_EnableMultifactorAuthentication: false
-Service_EnforceMultifactorAuthentication: false
-Service_EnableUserAccessTokens: false
+Service_EnableMultifactorAuthentication: "false"
+Service_EnforceMultifactorAuthentication: "false"
+Service_EnableUserAccessTokens: "false"
 Service_AllowCorsFrom: ""
 Service_SessionLengthWebInDays: 30
 Service_SessionLengthMobileInDays: 30
@@ -57,26 +57,26 @@ Service_SessionIdleTimeoutInMinutes: 0
 Service_WebsocketSecurePort: 443
 Service_WebsocketPort: 80
 Service_WebserverMode: "gzip"
-Service_EnableCustomEmoji: false
-Service_EnableEmojiPicker: true
+Service_EnableCustomEmoji: "false"
+Service_EnableEmojiPicker: "true"
 Service_RestrictCustomEmojiCreation: "all"
 Service_RestrictPostDelete: "all"
 Service_AllowEditPost: "always"
 Service_PostEditTimeLimit: 300
 Service_TimeBetweenUserTypingUpdatesMilliseconds: 5000
-Service_EnablePostSearch: true
-Service_EnableUserTypingMessages: true
-Service_EnableChannelViewedMessages: true
-Service_EnableUserStatuses: true
+Service_EnablePostSearch: "true"
+Service_EnableUserTypingMessages: "true"
+Service_EnableChannelViewedMessages: "true"
+Service_EnableUserStatuses: "true"
 Service_ClusterLogTimeoutMilliseconds: 2000
 
 Team_SiteName: "Mattermost"
 Team_MaxUsersPerTeam: 50
-Team_EnableTeamCreation: true
-Team_EnableUserCreation: true
-Team_EnableOpenServer: false
+Team_EnableTeamCreation: "true"
+Team_EnableUserCreation: "true"
+Team_EnableOpenServer: "false"
 Team_RestrictCreationToDomains: ""
-Team_EnableCustomBrand: false
+Team_EnableCustomBrand: "false"
 Team_CustomBrandText: ""
 Team_CustomDescriptionText: ""
 Team_RestrictDirectMessage: "any"
@@ -88,13 +88,13 @@ Team_RestrictPrivateChannelCreation: "all"
 Team_RestrictPublicChannelDeletion: "all"
 Team_RestrictPrivateChannelDeletion: "all"
 Team_RestrictPrivateChannelManageMembers: "all"
-Team_EnableXToLeaveChannelsFromLHS: false
+Team_EnableXToLeaveChannelsFromLHS: "false"
 Team_UserStatusAwayTimeout: 300
 Team_MaxChannelsPerTeam: 2000
 Team_MaxNotificationsPerChannel: 1000
-Team_EnableConfirmNotificationsToChannel: true
+Team_EnableConfirmNotificationsToChannel: "true"
 Team_TeammateNameDisplay: "username"
-Team_ExperimentalTownSquareIsReadOnly: false
+Team_ExperimentalTownSquareIsReadOnly: "false"
 
 ClientRequirements_AndroidLatestVersion: ""
 ClientRequirements_AndroidMinVersion: ""
@@ -110,32 +110,32 @@ Sql_DataSourceReplicas: []
 Sql_DataSourceSearchReplicas: []
 Sql_MaxIdleConns: 20
 Sql_MaxOpenConns: 300
-Sql_Trace: false
+Sql_Trace: "false"
 Sql_AtRestEncryptKey: "jksksj85pzbomhs3ockhrzynpgh8ox34"
 Sql_QueryTimeout: 30
 
-Log_EnableConsole: true
+Log_EnableConsole: "true"
 Log_ConsoleLevel: "INFO"
-Log_EnableFile: true
+Log_EnableFile: "true"
 Log_FileLevel: "INFO"
 Log_FileFormat: ""
 Log_FileLocation: ""
-Log_EnableWebhookDebugging: true
-Log_EnableDiagnostics: true
+Log_EnableWebhookDebugging: "true"
+Log_EnableDiagnostics: "true"
 
 Password_MinimumLength: 5
-Password_Lowercase: false
-Password_Number: false
-Password_Uppercase: false
-Password_Symbol: false
+Password_Lowercase: "false"
+Password_Number: "false"
+Password_Uppercase: "false"
+Password_Symbol: "false"
 
-File_EnableFileAttachments: true
-File_EnableMobileUpload: true
-File_EnableMobileDownload: true
+File_EnableFileAttachments: "true"
+File_EnableMobileUpload: "true"
+File_EnableMobileDownload: "true"
 File_MaxFileSize: 52428800
 File_DriverName: "local"
 File_Directory: "./data/"
-File_EnablePublicLink: false
+File_EnablePublicLink: "false"
 File_PublicLinkSalt: "ey3hcypcwwyqun3nok4dx5k3iiaepqda"
 File_InitialFont: "luximbi.ttf"
 File_AmazonS3AccessKeyId: ""
@@ -143,44 +143,44 @@ File_AmazonS3SecretAccessKey: ""
 File_AmazonS3Bucket: ""
 File_AmazonS3Region: "us-east-1"
 File_AmazonS3Endpoint: "s3.amazonaws.com"
-File_AmazonS3SSL: true
-File_AmazonS3SignV2: false
-File_AmazonS3SSE: false
-File_AmazonS3Trace: false
+File_AmazonS3SSL: "true"
+File_AmazonS3SignV2: "false"
+File_AmazonS3SSE: "false"
+File_AmazonS3Trace: "false"
 
-Email_EnableSignUpWithEmail: true
-Email_EnableSignInWithEmail: true
-Email_EnableSignInWithUsername: true
-Email_SendEmailNotifications: false
-Email_RequireEmailVerification: false
+Email_EnableSignUpWithEmail: "true"
+Email_EnableSignInWithEmail: "true"
+Email_EnableSignInWithUsername: "true"
+Email_SendEmailNotifications: "false"
+Email_RequireEmailVerification: "false"
 Email_FeedbackName: ""
 Email_FeedbackEmail: ""
 Email_FeedbackOrganization: ""
-Email_EnableSMTPAuth: false
+Email_EnableSMTPAuth: "false"
 Email_SMTPUsername: ""
 Email_SMTPPassword: ""
 Email_SMTPServer: ""
 Email_SMTPPort: ""
 Email_ConnectionSecurity: ""
 Email_InviteSalt: "du9bga69i1dknm8wnk8izgb4xm7py5gf"
-Email_SendPushNotifications: false
+Email_SendPushNotifications: "false"
 Email_PushNotificationServer: ""
 Email_PushNotificationContents: "generic"
-Email_EnableEmailBatching: false
+Email_EnableEmailBatching: "false"
 Email_EmailBatchingBufferSize: 256
 Email_EmailBatchingInterval: 30
-Email_SkipServerCertificateVerification: false
+Email_SkipServerCertificateVerification: "false"
 Email_EmailNotificationContentsType: "full"
 
-RateLimit_Enable: false
+RateLimit_Enable: "false"
 RateLimit_PerSec: 10
 RateLimit_MaxBurst: 100
 RateLimit_MemoryStoreSize: 10000
-RateLimit_VaryByRemoteAddr: true
+RateLimit_VaryByRemoteAddr: "true"
 RateLimit_VaryByHeader: ""
 
-Privacy_ShowEmailAddress: true
-Privacy_ShowFullName: true
+Privacy_ShowEmailAddress: "true"
+Privacy_ShowFullName: "true"
 
 Support_TermsOfServiceLink: "https://about.mattermost.com/default-terms/"
 Support_PrivacyPolicyLink: "https://about.mattermost.com/default-privacy-policy/"
@@ -189,18 +189,18 @@ Support_HelpLink: "https://about.mattermost.com/default-help/"
 Support_ReportAProblemLink: "https://about.mattermost.com/default-report-a-problem/"
 Support_SupportEmail: "feedback@mattermost.com"
 
-Announcement_EnableBanner: false
+Announcement_EnableBanner: "false"
 Announcement_BannerText: ""
 Announcement_BannerColor: "#f2a93b"
 Announcement_BannerTextColor: "#333333"
-Announcement_AllowBannerDismissal: true
+Announcement_AllowBannerDismissal: "true"
 
-Theme_EnableThemeSelection: true
+Theme_EnableThemeSelection: "true"
 Theme_DefaultTheme: "default"
-Theme_AllowCustomThemes: true
+Theme_AllowCustomThemes: "true"
 Theme_AllowedThemes: []
 
-GitLab_Enable: false
+GitLab_Enable: "false"
 GitLab_Secret: ""
 GitLab_Id: ""
 GitLab_Scope: ""
@@ -208,7 +208,7 @@ GitLab_AuthEndpoint: ""
 GitLab_TokenEndpoint: ""
 GitLab_UserApiEndpoint: ""
 
-Google_Enable: false
+Google_Enable: "false"
 Google_Secret: ""
 Google_Id: ""
 Google_Scope: "profile email"
@@ -216,7 +216,7 @@ Google_AuthEndpoint: "https://accounts.google.com/o/oauth2/v2/auth"
 Google_TokenEndpoint: "https://www.googleapis.com/oauth2/v4/token"
 Google_UserApiEndpoint: "https://www.googleapis.com/plus/v1/people/me"
 
-Office365_Enable: false
+Office365_Enable: "false"
 Office365_Secret: ""
 Office365_Id: ""
 Office365_Scope: "User.Read"
@@ -224,7 +224,7 @@ Office365_AuthEndpoint: "https://login.microsoftonline.com/common/oauth2/v2.0/au
 Office365_TokenEndpoint: "https://login.microsoftonline.com/common/oauth2/v2.0/token"
 Office365_UserApiEndpoint: "https://graph.microsoft.com/v1.0/me"
 
-Ldap_Enable: false
+Ldap_Enable: "false"
 Ldap_LdapServer: ""
 Ldap_LdapPort: 389
 Ldap_ConnectionSecurity: ""
@@ -240,22 +240,22 @@ Ldap_NicknameAttribute: ""
 Ldap_IdAttribute: ""
 Ldap_PositionAttribute: ""
 Ldap_SyncIntervalMinutes: 60
-Ldap_SkipCertificateVerification: false
+Ldap_SkipCertificateVerification: "false"
 Ldap_QueryTimeout: 60
 Ldap_MaxPageSize: 0
 Ldap_LoginFieldName: ""
 
-Compliance_Enable: false
+Compliance_Enable: "false"
 Compliance_Directory: "./data/"
-Compliance_EnableDaily: false
+Compliance_EnableDaily: "false"
 
 Localization_DefaultServerLocale: "en"
 Localization_DefaultClientLocale: "en"
 Localization_AvailableLocales: ""
 
-Saml_Enable: false
-Saml_Verify: true
-Saml_Encrypt: true
+Saml_Enable: "false"
+Saml_Verify: "true"
+Saml_Encrypt: "true"
 Saml_IdpUrl: ""
 Saml_IdpDescriptorUrl: ""
 Saml_AssertionConsumerServiceURL: ""
@@ -275,22 +275,22 @@ NativeApp_AppDownloadLink: "https://about.mattermost.com/downloads/"
 NativeApp_AndroidAppDownloadLink: "https://about.mattermost.com/mattermost-android-app/"
 NativeApp_IosAppDownloadLink: "https://about.mattermost.com/mattermost-ios-app/"
 
-Cluster_Enable: false
+Cluster_Enable: "false"
 Cluster_ClusterName: ""
 Cluster_OverrideHostname: ""
-Cluster_UseIpAddress: true
-Cluster_UseExperimentalGossip: false
-Cluster_ReadOnlyConfig: true
+Cluster_UseIpAddress: "true"
+Cluster_UseExperimentalGossip: "false"
+Cluster_ReadOnlyConfig: "true"
 Cluster_GossipPort: 8074
 Cluster_StreamingPort: 8075
 
-Metrics_Enable: false
+Metrics_Enable: "false"
 Metrics_BlockProfileRate: 0
 Metrics_ListenAddress: ":8067"
 
 Analytics_MaxUsersForStatistics: 2500
 
-Webrtc_Enable: false
+Webrtc_Enable: "false"
 Webrtc_GatewayWebsocketUrl: ""
 Webrtc_GatewayAdminUrl: ""
 Webrtc_GatewayAdminSecret: ""
@@ -302,23 +302,23 @@ Webrtc_TurnSharedKey: ""
 Elasticsearch_ConnectionUrl: "http://dockerhost:9200"
 Elasticsearch_Username: "elastic"
 Elasticsearch_Password: "changeme"
-Elasticsearch_EnableIndexing: false
-Elasticsearch_EnableSearching: false
-Elasticsearch_Sniff: true
+Elasticsearch_EnableIndexing: "false"
+Elasticsearch_EnableSearching: "false"
+Elasticsearch_Sniff: "true"
 Elasticsearch_PostIndexReplicas: 1
 Elasticsearch_PostIndexShards: 1
 Elasticsearch_AggregatePostsAfterDays: 365
 Elasticsearch_PostsAggregatorJobStartTime: "03:00"
 Elasticsearch_IndexPrefix: ""
 
-DataRetention_EnableMessageDeletion: false
-DataRetention_EnableFileDeletion: false
+DataRetention_EnableMessageDeletion: "false"
+DataRetention_EnableFileDeletion: "false"
 DataRetention_MessageRetentionDays: 365
 DataRetention_FileRetentionDays: 365
 DataRetention_DeletionJobStartTime: "02:00"
 
-Job_RunJobs: true
-Job_RunScheduler: true
+Job_RunJobs: "true"
+Job_RunScheduler: "true"
 
-Plugin_Enable: false
+Plugin_Enable: "false"
 Plugin_Plugins: {}

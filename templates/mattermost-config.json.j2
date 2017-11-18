@@ -91,8 +91,8 @@
     "SqlSettings": {
         "DriverName": "postgres",
         "DataSource": "postgres://{{ db_user }}:{{ db_password }}@127.0.0.1:5432/{{ db_name }}?sslmode=disable\u0026connect_timeout=10",
-        "DataSourceReplicas": [{{ Sql_DataSourceReplicas }}],
-        "DataSourceSearchReplicas": [{{ Sql_DataSourceSearchReplicas }}],
+        "DataSourceReplicas": {{ Sql_DataSourceReplicas }},
+        "DataSourceSearchReplicas": {{ Sql_DataSourceSearchReplicas }},
         "MaxIdleConns": {{ Sql_MaxIdleConns }},
         "MaxOpenConns": {{ Sql_MaxOpenConns }},
         "Trace": {{ Sql_Trace }},
@@ -192,7 +192,7 @@
         "EnableThemeSelection": {{ Theme_EnableThemeSelection }},
         "DefaultTheme": "{{ Theme_DefaultTheme }}",
         "AllowCustomThemes": {{ Theme_AllowCustomThemes }},
-        "AllowedThemes": [{{ Theme_AllowedThemes }}]
+        "AllowedThemes": {{ Theme_AllowedThemes }}
     },
     "GitLabSettings": {
         "Enable": {{ GitLab_Enable }},
@@ -208,24 +208,24 @@
         "Secret": "{{ Google_Secret }}",
         "Id": "{{ Google_Id }}",
         "Scope": "{{ Google_Scope }}",
-        "AuthEndpoint": "{{ Google_AuthEndpoint }}"
-        "TokenEndpoint": "{{ Google_TokenEndpoint }}"
+        "AuthEndpoint": "{{ Google_AuthEndpoint }}",
+        "TokenEndpoint": "{{ Google_TokenEndpoint }}",
         "UserApiEndpoint": "{{ Google_UserApiEndpoint }}"
     },
     "Office365Settings": {
         "Enable": {{ Office365_Enable }},
         "Secret": "{{ Office365_Secret }}",
         "Id": "{{ Office365_Id }}",
-        "Scope": "{{ Office365_Scope }}"
-        "AuthEndpoint": "{{ Office365_AuthEndpoint }}
-        "TokenEndpoint": "{{ Office365_TokenEndpoint }}"",
+        "Scope": "{{ Office365_Scope }}",
+        "AuthEndpoint": "{{ Office365_AuthEndpoint }}",
+        "TokenEndpoint": "{{ Office365_TokenEndpoint }}",
         "UserApiEndpoint": "{{ Office365_UserApiEndpoint }}"
     },
     "LdapSettings": {
         "Enable": {{ Ldap_Enable }},
         "LdapServer": "{{ Ldap_LdapServer }}",
         "LdapPort": {{ Ldap_LdapPort }},
-        "ConnectionSecurity": "{{ Ldap_ConnectionSecurity }}"",
+        "ConnectionSecurity": "{{ Ldap_ConnectionSecurity }}",
         "BaseDN": "{{ Ldap_BaseDN }}",
         "BindUsername": "{{ Ldap_BindUsername }}",
         "BindPassword": "{{ Ldap_BindPassword }}",
@@ -279,7 +279,7 @@
     },
     "ClusterSettings": {
         "Enable": {{ Cluster_Enable }},
-        "ClusterName": "{{ Cluster_ClusterName }}"",
+        "ClusterName": "{{ Cluster_ClusterName }}",
         "OverrideHostname": "{{ Cluster_OverrideHostname }}",
         "UseIpAddress": {{ Cluster_UseIpAddress }},
         "UseExperimentalGossip": {{ Cluster_UseExperimentalGossip }},
@@ -331,6 +331,6 @@
     },
     "PluginSettings": {
         "Enable": {{ Plugin_Enable }},
-        "Plugins": {% raw %}{{% endraw %}{{ Plugin_Plugins }}{% raw %}}{% endraw %}
+        "Plugins": {{ Plugin_Plugins }}
     }
 }
