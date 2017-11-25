@@ -2,12 +2,16 @@
 # handlers file for mattermost
 - name: restart nginx
   action: service name=nginx state=restarted
+  listen: "restart services"
 
 - name: restart postgres
   action: service name=postgresql-{{ postgres_version }} state=restarted
   when: ansible_os_family == "RedHat"
+  listen: "restart services"
 
 - name: restart postgres
   action: service name=postgresql state=restarted
   when: ansible_os_family == "Debian"
+  listen: "restart services"
+
 # vim: ft=ansible:    

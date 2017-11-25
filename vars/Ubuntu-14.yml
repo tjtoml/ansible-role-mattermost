@@ -1,5 +1,4 @@
 ---
 init_system: systemv
 use_get_url: false
-certbot_manual: false
 #vim:ft=ansible:

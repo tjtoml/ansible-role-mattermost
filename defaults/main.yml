@@ -14,7 +14,7 @@ postgres_version: 9.4
 
 ## Type of SSL you want. Acceptable values are: letsencrypt, snakeoil, none
 SSL_type: letsencrypt
-
+staging: false #Use when testing letsencrypt
 # MATTERMOST config.json SETTINGS
 
 Service_SiteURL: ""

@@ -75,6 +75,6 @@
     name: mattermost
     enabled: yes
     state: started 
-
+  notify: "restart services"
 
 # vim:ft=ansible:

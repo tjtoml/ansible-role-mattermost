@@ -17,12 +17,32 @@
   with_items:
     - mattermost_nginx.te
     - mattermost_nginx.pp
-  when: loaded_selinux_modules.stdout.find('mattermost_nginx') == -1
+  when: (loaded_selinux_modules.stdout.find('mattermost_nginx') == -1 and ansible_distribution_major_version == "7")
 
 - name: Install SElinux policy
   command: "semodule -i /tmp/mattermost_nginx.pp"
   args: 
     chdir: /tmp/
   notify: restart nginx
-  when: loaded_selinux_modules.stdout.find('mattermost_nginx') == -1
+  when: (loaded_selinux_modules.stdout.find('mattermost_nginx') == -1 and ansible_distribution_major_version == "7")
+
+- name: Copy selinux policy files
+  copy:
+    src: "{{ item }}"
+    dest: /tmp/
+    owner: root
+    group: root
+    mode: 0700
+  with_items:
+    - mattermost_nginx_rhel6.te
+    - mattermost_nginx_rhel6.pp
+  when: (loaded_selinux_modules.stdout.find('mattermost_nginx_rhel6') == -1 and ansible_distribution_major_version == "6")
+
+- name: Install SElinux policy
+  command: "semodule -i /tmp/mattermost_nginx_rhel6.pp"
+  args: 
+    chdir: /tmp/
+  notify: restart nginx
+  when: (loaded_selinux_modules.stdout.find('mattermost_nginx_rhel6') == -1 and ansible_distribution_major_version == "6")
+
 # vim:ft=ansible

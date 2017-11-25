@@ -1,5 +1,6 @@
 start on runlevel [2345]
 stop on runlevel [016]
 respawn
+limit nofile 50000 50000
 chdir /opt/mattermost
 exec sudo -u {{ mattermost_user }} -g {{ mattermost_user }} bin/platform

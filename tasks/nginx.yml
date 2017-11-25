@@ -7,6 +7,15 @@
     group: root
     mode: 0644
 
+- name: Change nginx cache directory permissions
+  file:
+    path: /var/cache/nginx
+    state: directory
+    owner: nginx
+    group: nginx
+    recurse: yes
+  when: ansible_os_family == "RedHat"
+
 - name: Ensure nginx default configuration files are deleted
   file: 
     path: "{{ item }}"
