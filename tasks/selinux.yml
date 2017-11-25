@@ -1,0 +1,28 @@
+---
+
+### THIS ONLY WORKS IF MATTERMOST IS RUNNING ON THE DEFAULT PORT
+
+- name: Read loaded SElinux policies
+  shell: semodule -l 
+  register: loaded_selinux_modules
+  changed_when: false
+
+- name: Copy selinux policy files
+  copy:
+    src: "{{ item }}"
+    dest: /tmp/
+    owner: root
+    group: root
+    mode: 0700
+  with_items:
+    - mattermost_nginx.te
+    - mattermost_nginx.pp
+  when: loaded_selinux_modules.stdout.find('mattermost_nginx') == -1
+
+- name: Install SElinux policy
+  command: "semodule -i /tmp/mattermost_nginx.pp"
+  args: 
+    chdir: /tmp/
+  notify: restart nginx
+  when: loaded_selinux_modules.stdout.find('mattermost_nginx') == -1
+# vim:ft=ansible

@@ -322,3 +322,6 @@ Job_RunScheduler: "true"
 
 Plugin_Enable: "false"
 Plugin_Plugins: {}
+
+#Distro-Specific defaults
+selinux_enable: false

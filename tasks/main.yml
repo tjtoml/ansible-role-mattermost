@@ -65,6 +65,10 @@
     recurse: yes
 
 - include_tasks: "init/{{ init_system }}.yml"
+ 
+- include_tasks: selinux.yml
+  when: selinux_enable
+  notify: restart nginx
 
 - name: Enable Mattermost service
   service:
@@ -72,5 +76,5 @@
     enabled: yes
     state: started 
 
-#include_tasks: "{{ ansible_distribution }}/{{ ansible_distribution_major_version }}/main.yml"
+
 # vim:ft=ansible:
