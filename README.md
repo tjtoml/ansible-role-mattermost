@@ -31,7 +31,6 @@ db_name: mattermost
 db_password: notReallyASecurePassword
 cert_email_address: abc@123.com
 mattermost_user: mattermost
-postgres_version: 9.4
 SSL_type: letsencrypt #letsencrypt, snakeoil, nossl
 ```
 For a full list of available variables and their defaults, see `defaults/main.yml`.
