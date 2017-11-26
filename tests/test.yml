@@ -10,9 +10,8 @@
     - name: Gather Facts
       setup:
   roles:
-    - {role: ansible-role-mattermost}
-
+    - { role: ansible-role-mattermost }
   vars:
-    - ssl_type: nossl
+    - SSL_type: nossl
 
 # vim:ft=ansible:
