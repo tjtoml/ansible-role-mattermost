@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/tjtoml/ansible-role-mattermost.svg?branch=master)](https://travis-ci.org/tjtoml/ansible-role-mattermost) [![role](https://img.shields.io/badge/Galaxy-tjtoml.mattermost-5bbdbf.svg)](https://galaxy.ansible.com/tjtoml/mattermost/)
 # tjtoml.mattermost
----
 This is an ansible role that installs a standalone version of Mattermost, which is an open-source Slack alternative.
 This playbook installs Mattermost version 4.3.2 (Team Edition) by default.
 
@@ -19,13 +18,11 @@ This role is compatible with:
 - [x] Debian 9.2 Stretch (DigitalOcean)
 
 ## Requirements
----
 * FQDN configured: `mattermost.example.com`, `www.example.com`, etc.
 * If you want to use letsencrypt, you will need reverse DNS configured. Check it for your server [here](https://www.whatismyip.com/reverse-dns-lookup/).
 * Internet Access
 
 ## Role Variables
----
 You can define any of the variables listed in mattermost's `config.json` file. There also several "high level" variables that you will probably want to set:
 ```
 mattermost_version: 4.3.2
@@ -41,7 +38,6 @@ For a full list of available variables and their defaults, see `defaults/main.ym
 
 ## Dependencies
 ---
-```
 tjtoml.nginx
 tjtoml.postgresql
 tjtoml.letsencrypt
@@ -49,7 +45,6 @@ tjtoml.letsencrypt
 Run `ansible-galaxy install -r requirements.yml` from the project directory to install all dependencies.
 
 ## Example Playbook
----
 ```
 ---
 - hosts: all
@@ -74,13 +69,10 @@ Run `ansible-galaxy install -r requirements.yml` from the project directory to i
 ```
 
 ## License
----
 BSD, MIT
 
 ## Author Information
----
 Written by [tjtoml](https://github.com/tjtoml)
 
 ## Contributing
-------------
 Please submit pull requests! They make my day.
