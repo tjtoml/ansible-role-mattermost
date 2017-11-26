@@ -30,6 +30,9 @@ script:
   - ansible-playbook -i tests/inventory tests/test.yml -vvvv --skip-tags update,copy_host_ssh_id
 
   - "ansible-playbook -i tests/inventory tests/test.yml | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)"
+
+  - "curl 127.0.0.1>got.html && diff got.html tests/expected.html"
+
 notifications:
   email: false
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
