@@ -7,7 +7,7 @@ This playbook installs Mattermost version 4.3.2 (Team Edition) by default.
 It downloads the binary from [mattermost.org](https://www.mattermost.org/download/). If you need to install the Enterprise
 edition, consult the Mattermost documentation.
 
-This role compatible with:
+This role is compatible with:
 - [x] Ubuntu 14.04.5 LTS, Trusty Tahr (DigitalOcean)
 - [x] Ubuntu 16.04.3 LTS, Xenial Xerus (DigitalOcean)
 - [x] CentOS 6.9  (DigitalOcean)
