@@ -5,9 +5,6 @@ dist: trusty
 language: python
 python: "2.7"
 
-addons:
-  postgresql: "9.4"
-
 # Doc: https://docs.travis-ci.com/user/customizing-the-build#Build-Matrix
 env:
   - ANSIBLE_VERSION=latest
@@ -23,8 +20,7 @@ install:
   - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible-lint; fi
   - echo '[defaults]'>>ansible.cfg
   - echo 'roles_path = /home/travis/build/tjtoml'>>ansible.cfg  
-  - sed -i '/pipelining/d'  ansible.cfg
-  - echo 'pipelining = true'>>ansible.cfg  
+  - echo 'allow_world_readable_tmpfiles = true'>>ansible.cfg
   - ansible-galaxy install -r requirements.yml
 script:
   # Check the role/playbook's syntax.
