@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/tjtoml/ansible-role-mattermost.svg?branch=master)](https://travis-ci.org/tjtoml/ansible-role-mattermost) [![role](https://img.shields.io/badge/Galaxy-tjtoml.mattermost-5bbdbf.svg)](https://galaxy.ansible.com/tjtoml/mattermost/)
 # tjtoml.mattermost
 ---
 This is an ansible role that installs a standalone version of Mattermost, which is an open-source Slack alternative.
@@ -82,4 +83,4 @@ Written by [tjtoml](https://github.com/tjtoml)
 
 ## Contributing
 ------------
-Please submit pull requests! They make my day. 
+Please submit pull requests! They make my day.
