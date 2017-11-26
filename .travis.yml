@@ -21,6 +21,8 @@ install:
   - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible-lint; fi
   - echo '[defaults]'>>ansible.cfg
   - echo 'roles_path = /home/travis/build/tjtoml'>>ansible.cfg  
+  - sed -i 'pipelining/d'  ansible.cfg
+  - echo 'pipelining = true'>>ansible.cfg  
   - ansible-galaxy install -r requirements.yml
 script:
   # Check the role/playbook's syntax.

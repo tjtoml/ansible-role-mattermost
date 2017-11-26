@@ -9,6 +9,9 @@
       changed_when: false
     - name: Gather Facts
       setup:
+    - name: Remove requiretty
+      lineinfile: regexp="^\s+\w+\s+requiretty" dest=/etc/sudoers state=absent
+    
   roles:
     - { role: ansible-role-mattermost }
   vars:
