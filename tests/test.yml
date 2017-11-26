@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   become: true
+  become_user: root
   connection: local
   gather_facts: no
   pre_tasks:
