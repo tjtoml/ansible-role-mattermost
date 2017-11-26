@@ -37,7 +37,7 @@ SSL_type: letsencrypt #letsencrypt, snakeoil, nossl
 For a full list of available variables and their defaults, see `defaults/main.yml`.
 
 ## Dependencies
----
+```
 tjtoml.nginx
 tjtoml.postgresql
 tjtoml.letsencrypt
