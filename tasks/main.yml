@@ -28,20 +28,6 @@
   args:
     creates: /opt/mattermost/bin/platform
 
-#- name: Edit /opt/mattermost/config/config.json
-#  lineinfile:
-#    dest: /opt/mattermost/config/config.json
-#    regexp: '"DriverName": "mysql",'
-#    line: '        "DriverName": "postgres",'
-#    backrefs: yes
-
-#- name: Edit /opt/mattermost/config/config.json
-#  lineinfile:
-#    dest: /opt/mattermost/config/config.json
-#    regexp: '"DataSource":'
-#    line: '        "DataSource": "postgres://{{ db_user }}:{{ db_password }}@127.0.0.1:5432/{{ db_name }}?sslmode=disable&connect_timeout=10",'
-#    backrefs: yes 
-
 - name: Create user to run mattermost service.
   user: 
     name: "{{ mattermost_user }}"

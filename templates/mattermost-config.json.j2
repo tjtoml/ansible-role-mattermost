@@ -51,7 +51,8 @@
         "EnableUserTypingMessages": {{ Service_EnableUserTypingMessages }},
         "EnableChannelViewedMessages": {{ Service_EnableChannelViewedMessages }},
         "EnableUserStatuses": {{ Service_EnableUserStatuses }},
-        "ClusterLogTimeoutMilliseconds": {{ Service_ClusterLogTimeoutMilliseconds }}
+        "ClusterLogTimeoutMilliseconds": {{ Service_ClusterLogTimeoutMilliseconds }},
+        "CloseUnusedDirectMessages": {{ Service_CloseUnusedDirectMessages }}
     },
     "TeamSettings": {
         "SiteName": "{{ Team_SiteName }}",
@@ -223,7 +224,7 @@
     },
     "LdapSettings": {
         "Enable": {{ Ldap_Enable }},
-	"EnableSync": {{ Ldap_EnableSync }},
+        "EnableSync": {{ Ldap_EnableSync }},
         "LdapServer": "{{ Ldap_LdapServer }}",
         "LdapPort": {{ Ldap_LdapPort }},
         "ConnectionSecurity": "{{ Ldap_ConnectionSecurity }}",
@@ -256,7 +257,7 @@
     },
     "SamlSettings": {
         "Enable": {{ Saml_Enable }},
-	"EnableSyncWithLdap": {{ Saml_EnableSyncWithLdap }},
+        "EnableSyncWithLdap": {{ Saml_EnableSyncWithLdap }},
         "Verify": {{ Saml_Verify }},
         "Encrypt": {{ Saml_Encrypt }},
         "IdpUrl": "{{ Saml_IdpUrl }}",
@@ -319,9 +320,9 @@
         "AggregatePostsAfterDays": {{ Elasticsearch_AggregatePostsAfterDays }},
         "PostsAggregatorJobStartTime": "{{ Elasticsearch_PostsAggregatorJobStartTime }}",
         "IndexPrefix": "{{ Elasticsearch_IndexPrefix }}",
-	"LiveIndexingBatchSize": {{ Elasticsearch_LiveIndexingBatchSize }},
-	"BulkIndexingTimeWindowSeconds": {{ Elasticsearch_BulkIndexingTimeWindowSeconds }},
-	"RequestTimeoutSeconds": {{ Elasticsearch_RequestTimeoutSeconds }}
+        "LiveIndexingBatchSize": {{ Elasticsearch_LiveIndexingBatchSize }},
+        "BulkIndexingTimeWindowSeconds": {{ Elasticsearch_BulkIndexingTimeWindowSeconds }},
+        "RequestTimeoutSeconds": {{ Elasticsearch_RequestTimeoutSeconds }}
     },
     "DataRetentionSettings": {
         "EnableMessageDeletion": {{ DataRetention_EnableMessageDeletion }},
@@ -336,9 +337,9 @@
     },
     "PluginSettings": {
         "Enable": {{ Plugin_Enable }},
-	"EnableUploads": {{ Plugin_EnableUploads }},
-	"Directory": {{ Plugin_Directory }},
+        "EnableUploads": {{ Plugin_EnableUploads }},
+        "Directory": "{{ Plugin_Directory }}",
         "Plugins": {{ Plugin_Plugins }},
-	"PluginStates": {{ Plugin_PluginStates }}
+        "PluginStates": {{ Plugin_PluginStates }}
     }
 }

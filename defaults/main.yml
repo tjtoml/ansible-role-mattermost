@@ -69,6 +69,7 @@ Service_EnableUserTypingMessages: "true"
 Service_EnableChannelViewedMessages: "true"
 Service_EnableUserStatuses: "true"
 Service_ClusterLogTimeoutMilliseconds: 2000
+Service_CloseUnusedDirectMessages: "false"
 
 Team_SiteName: "Mattermost"
 Team_MaxUsersPerTeam: 50
@@ -111,7 +112,7 @@ Sql_DataSourceSearchReplicas: []
 Sql_MaxIdleConns: 20
 Sql_MaxOpenConns: 300
 Sql_Trace: "false"
-Sql_AtRestEncryptKey: "jksksj85pzbomhs3ockhrzynpgh8ox34"
+Sql_AtRestEncryptKey: ""
 Sql_QueryTimeout: 30
 
 Log_EnableConsole: "true"
@@ -136,7 +137,7 @@ File_MaxFileSize: 52428800
 File_DriverName: "local"
 File_Directory: "./data/"
 File_EnablePublicLink: "false"
-File_PublicLinkSalt: "ey3hcypcwwyqun3nok4dx5k3iiaepqda"
+File_PublicLinkSalt: ""
 File_InitialFont: "luximbi.ttf"
 File_AmazonS3AccessKeyId: ""
 File_AmazonS3SecretAccessKey: ""
@@ -162,7 +163,7 @@ Email_SMTPPassword: ""
 Email_SMTPServer: ""
 Email_SMTPPort: ""
 Email_ConnectionSecurity: ""
-Email_InviteSalt: "du9bga69i1dknm8wnk8izgb4xm7py5gf"
+Email_InviteSalt: ""
 Email_SendPushNotifications: "false"
 Email_PushNotificationServer: ""
 Email_PushNotificationContents: "generic"
@@ -313,7 +314,7 @@ Elasticsearch_AggregatePostsAfterDays: 365
 Elasticsearch_PostsAggregatorJobStartTime: "03:00"
 Elasticsearch_IndexPrefix: ""
 Elasticsearch_LiveIndexingBatchSize : 1
-Elasticsearch_BulkIndexingTimeWindowSeconds: 3600,
+Elasticsearch_BulkIndexingTimeWindowSeconds: 3600
 Elasticsearch_RequestTimeoutSeconds: 30
 
 DataRetention_EnableMessageDeletion: "false"
@@ -325,7 +326,7 @@ DataRetention_DeletionJobStartTime: "02:00"
 Job_RunJobs: "true"
 Job_RunScheduler: "true"
 
-Plugin_Enable: "false"
+Plugin_Enable: "true"
 Plugin_EnableUploads: "false"
 Plugin_Directory: "./plugins"
 Plugin_Plugins: {}
