@@ -1,3 +1,5 @@
 .idea
 *.swp
 scratch
+mattermost*.tar.gz
+mattermost
