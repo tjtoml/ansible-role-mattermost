@@ -72,8 +72,8 @@
         "RestrictPublicChannelDeletion": "{{ Team_RestrictPublicChannelDeletion }}",
         "RestrictPrivateChannelDeletion": "{{ Team_RestrictPrivateChannelDeletion }}",
         "RestrictPrivateChannelManageMembers": "{{ Team_RestrictPrivateChannelManageMembers }}",
-        "EnableXToLeaveChannelsFromLHS": "{{ Team_EnableXToLeaveChannelsFromLHS }}",
-        "UserStatusAwayTimeout": "{{ Team_UserStatusAwayTimeout }}",
+        "EnableXToLeaveChannelsFromLHS": {{ Team_EnableXToLeaveChannelsFromLHS }},
+        "UserStatusAwayTimeout": {{ Team_UserStatusAwayTimeout }},
         "MaxChannelsPerTeam": {{ Team_MaxChannelsPerTeam }},
         "MaxNotificationsPerChannel": {{ Team_MaxNotificationsPerChannel }},
         "EnableConfirmNotificationsToChannel": {{ Team_EnableConfirmNotificationsToChannel }},
@@ -223,6 +223,7 @@
     },
     "LdapSettings": {
         "Enable": {{ Ldap_Enable }},
+	"EnableSync": {{ Ldap_EnableSync }},
         "LdapServer": "{{ Ldap_LdapServer }}",
         "LdapPort": {{ Ldap_LdapPort }},
         "ConnectionSecurity": "{{ Ldap_ConnectionSecurity }}",
@@ -255,6 +256,7 @@
     },
     "SamlSettings": {
         "Enable": {{ Saml_Enable }},
+	"EnableSyncWithLdap": {{ Saml_EnableSyncWithLdap }},
         "Verify": {{ Saml_Verify }},
         "Encrypt": {{ Saml_Encrypt }},
         "IdpUrl": "{{ Saml_IdpUrl }}",
@@ -316,7 +318,10 @@
         "PostIndexShards": {{ Elasticsearch_PostIndexShards }},
         "AggregatePostsAfterDays": {{ Elasticsearch_AggregatePostsAfterDays }},
         "PostsAggregatorJobStartTime": "{{ Elasticsearch_PostsAggregatorJobStartTime }}",
-        "IndexPrefix": "{{ Elasticsearch_IndexPrefix }}"
+        "IndexPrefix": "{{ Elasticsearch_IndexPrefix }}",
+	"LiveIndexingBatchSize": {{ Elasticsearch_LiveIndexingBatchSize }},
+	"BulkIndexingTimeWindowSeconds": {{ Elasticsearch_BulkIndexingTimeWindowSeconds }},
+	"RequestTimeoutSeconds": {{ Elasticsearch_RequestTimeoutSeconds }}
     },
     "DataRetentionSettings": {
         "EnableMessageDeletion": {{ DataRetention_EnableMessageDeletion }},
@@ -331,6 +336,9 @@
     },
     "PluginSettings": {
         "Enable": {{ Plugin_Enable }},
-        "Plugins": {{ Plugin_Plugins }}
+	"EnableUploads": {{ Plugin_EnableUploads }},
+	"Directory": {{ Plugin_Directory }},
+        "Plugins": {{ Plugin_Plugins }},
+	"PluginStates": {{ Plugin_PluginStates }}
     }
 }

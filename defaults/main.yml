@@ -3,7 +3,7 @@
 
 # High Level Vars
 
-mattermost_version: 4.3.2
+mattermost_version: 4.4.2
 db_user: mmost
 db_name: mattermost
 db_password: notReallyASecurePassword
@@ -225,6 +225,7 @@ Office365_TokenEndpoint: "https://login.microsoftonline.com/common/oauth2/v2.0/t
 Office365_UserApiEndpoint: "https://graph.microsoft.com/v1.0/me"
 
 Ldap_Enable: "false"
+Ldap_EnableSync: "false"
 Ldap_LdapServer: ""
 Ldap_LdapPort: 389
 Ldap_ConnectionSecurity: ""
@@ -254,6 +255,7 @@ Localization_DefaultClientLocale: "en"
 Localization_AvailableLocales: ""
 
 Saml_Enable: "false"
+Saml_EnableSyncWithLdap: "false"
 Saml_Verify: "true"
 Saml_Encrypt: "true"
 Saml_IdpUrl: ""
@@ -310,6 +312,9 @@ Elasticsearch_PostIndexShards: 1
 Elasticsearch_AggregatePostsAfterDays: 365
 Elasticsearch_PostsAggregatorJobStartTime: "03:00"
 Elasticsearch_IndexPrefix: ""
+Elasticsearch_LiveIndexingBatchSize : 1
+Elasticsearch_BulkIndexingTimeWindowSeconds: 3600,
+Elasticsearch_RequestTimeoutSeconds: 30
 
 DataRetention_EnableMessageDeletion: "false"
 DataRetention_EnableFileDeletion: "false"
@@ -321,7 +326,10 @@ Job_RunJobs: "true"
 Job_RunScheduler: "true"
 
 Plugin_Enable: "false"
+Plugin_EnableUploads: "false"
+Plugin_Directory: "./plugins"
 Plugin_Plugins: {}
+Plugin_PluginStates: {}
 
 #Distro-Specific defaults
 selinux_enable: false
