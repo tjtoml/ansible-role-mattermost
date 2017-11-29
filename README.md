@@ -17,6 +17,8 @@ This role is compatible with:
 - [x] Debian 8.9 Jessie (DigitalOcean)
 - [x] Debian 9.2 Stretch (DigitalOcean)
 
+I have no reason to believe that installs at other cloud hosting providers will not work. I use DigitalOcean as a test platform. 
+
 ## Requirements
 * FQDN configured: `mattermost.example.com`, `www.example.com`, etc.
 * If you want to use letsencrypt, you will need reverse DNS configured. Check it for your server [here](https://www.whatismyip.com/reverse-dns-lookup/).
