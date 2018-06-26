@@ -51,7 +51,8 @@
         "EnableUserTypingMessages": {{ Service_EnableUserTypingMessages }},
         "EnableChannelViewedMessages": {{ Service_EnableChannelViewedMessages }},
         "EnableUserStatuses": {{ Service_EnableUserStatuses }},
-        "ClusterLogTimeoutMilliseconds": {{ Service_ClusterLogTimeoutMilliseconds }}
+        "ClusterLogTimeoutMilliseconds": {{ Service_ClusterLogTimeoutMilliseconds }},
+        "CloseUnusedDirectMessages": {{ Service_CloseUnusedDirectMessages }}
     },
     "TeamSettings": {
         "SiteName": "{{ Team_SiteName }}",
@@ -72,8 +73,8 @@
         "RestrictPublicChannelDeletion": "{{ Team_RestrictPublicChannelDeletion }}",
         "RestrictPrivateChannelDeletion": "{{ Team_RestrictPrivateChannelDeletion }}",
         "RestrictPrivateChannelManageMembers": "{{ Team_RestrictPrivateChannelManageMembers }}",
-        "EnableXToLeaveChannelsFromLHS": "{{ Team_EnableXToLeaveChannelsFromLHS }}",
-        "UserStatusAwayTimeout": "{{ Team_UserStatusAwayTimeout }}",
+        "EnableXToLeaveChannelsFromLHS": {{ Team_EnableXToLeaveChannelsFromLHS }},
+        "UserStatusAwayTimeout": {{ Team_UserStatusAwayTimeout }},
         "MaxChannelsPerTeam": {{ Team_MaxChannelsPerTeam }},
         "MaxNotificationsPerChannel": {{ Team_MaxNotificationsPerChannel }},
         "EnableConfirmNotificationsToChannel": {{ Team_EnableConfirmNotificationsToChannel }},
@@ -96,7 +97,7 @@
         "MaxIdleConns": {{ Sql_MaxIdleConns }},
         "MaxOpenConns": {{ Sql_MaxOpenConns }},
         "Trace": {{ Sql_Trace }},
-        "AtRestEncryptKey": "{{ Sql_AtRestEncryptKey }}",
+        "AtRestEncryptKey": "{{ AtRestEncryptKey.stdout }}",
         "QueryTimeout": {{ Sql_QueryTimeout }}
     },
     "LogSettings": {
@@ -124,7 +125,7 @@
         "DriverName": "{{ File_DriverName }}",
         "Directory": "{{ File_Directory }}",
         "EnablePublicLink": {{ File_EnablePublicLink }},
-        "PublicLinkSalt": "{{ File_PublicLinkSalt }}",
+        "PublicLinkSalt": "{{ PublicLinkSalt.stdout }}",
         "InitialFont": "{{ File_InitialFont }}",
         "AmazonS3AccessKeyId": "{{ File_AmazonS3AccessKeyId }}",
         "AmazonS3SecretAccessKey": "{{ File_AmazonS3SecretAccessKey }}",
@@ -151,7 +152,7 @@
         "SMTPServer": "{{ Email_SMTPServer }}",
         "SMTPPort": "{{ Email_SMTPPort }}",
         "ConnectionSecurity": "{{ Email_ConnectionSecurity }}",
-        "InviteSalt": "{{ Email_InviteSalt }}",
+        "InviteSalt": "{{ InviteSalt.stdout }}",
         "SendPushNotifications": {{ Email_SendPushNotifications }},
         "PushNotificationServer": "{{ Email_PushNotificationServer }}",
         "PushNotificationContents": "{{ Email_PushNotificationContents }}",
@@ -223,6 +224,7 @@
     },
     "LdapSettings": {
         "Enable": {{ Ldap_Enable }},
+        "EnableSync": {{ Ldap_EnableSync }},
         "LdapServer": "{{ Ldap_LdapServer }}",
         "LdapPort": {{ Ldap_LdapPort }},
         "ConnectionSecurity": "{{ Ldap_ConnectionSecurity }}",
@@ -255,6 +257,7 @@
     },
     "SamlSettings": {
         "Enable": {{ Saml_Enable }},
+        "EnableSyncWithLdap": {{ Saml_EnableSyncWithLdap }},
         "Verify": {{ Saml_Verify }},
         "Encrypt": {{ Saml_Encrypt }},
         "IdpUrl": "{{ Saml_IdpUrl }}",
@@ -316,7 +319,10 @@
         "PostIndexShards": {{ Elasticsearch_PostIndexShards }},
         "AggregatePostsAfterDays": {{ Elasticsearch_AggregatePostsAfterDays }},
         "PostsAggregatorJobStartTime": "{{ Elasticsearch_PostsAggregatorJobStartTime }}",
-        "IndexPrefix": "{{ Elasticsearch_IndexPrefix }}"
+        "IndexPrefix": "{{ Elasticsearch_IndexPrefix }}",
+        "LiveIndexingBatchSize": {{ Elasticsearch_LiveIndexingBatchSize }},
+        "BulkIndexingTimeWindowSeconds": {{ Elasticsearch_BulkIndexingTimeWindowSeconds }},
+        "RequestTimeoutSeconds": {{ Elasticsearch_RequestTimeoutSeconds }}
     },
     "DataRetentionSettings": {
         "EnableMessageDeletion": {{ DataRetention_EnableMessageDeletion }},
@@ -331,6 +337,9 @@
     },
     "PluginSettings": {
         "Enable": {{ Plugin_Enable }},
-        "Plugins": {{ Plugin_Plugins }}
+        "EnableUploads": {{ Plugin_EnableUploads }},
+        "Directory": "{{ Plugin_Directory }}",
+        "Plugins": {{ Plugin_Plugins }},
+        "PluginStates": {{ Plugin_PluginStates }}
     }
 }

@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/tjtoml/ansible-role-mattermost.svg?branch=master)](https://travis-ci.org/tjtoml/ansible-role-mattermost) [![role](https://img.shields.io/badge/Galaxy-tjtoml.mattermost-5bbdbf.svg)](https://galaxy.ansible.com/tjtoml/mattermost/)
 # tjtoml.mattermost
 This is an ansible role that installs a standalone version of Mattermost, which is an open-source Slack alternative.
-This playbook installs Mattermost version 4.3.2 (Team Edition) by default.
+This playbook installs Mattermost version 4.4.2 (Team Edition) by default.
 
 It downloads the binary from [mattermost.org](https://www.mattermost.org/download/). If you need to install the Enterprise
 edition, consult the Mattermost documentation.
@@ -27,7 +27,7 @@ I have no reason to believe that installs at other cloud hosting providers will 
 ## Role Variables
 You can define any of the variables listed in mattermost's `config.json` file. There also several "high level" variables that you will probably want to set:
 ```
-mattermost_version: 4.3.2
+mattermost_version: 4.4.2
 db_user: mmost
 db_name: mattermost
 db_password: notReallyASecurePassword
@@ -60,7 +60,7 @@ Run `ansible-galaxy install -r requirements.yml` from the project directory to i
   roles:
     - { role: tjtoml.mattermost }
   vars:
-    mattermost_version: 4.3.2
+    mattermost_version: 4.4.2
     db_user: mmost
     db_name: mattermost
     db_password: notReallyASecurePassword

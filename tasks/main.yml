@@ -28,34 +28,12 @@
   args:
     creates: /opt/mattermost/bin/platform
 
-#- name: Edit /opt/mattermost/config/config.json
-#  lineinfile:
-#    dest: /opt/mattermost/config/config.json
-#    regexp: '"DriverName": "mysql",'
-#    line: '        "DriverName": "postgres",'
-#    backrefs: yes
-
-#- name: Edit /opt/mattermost/config/config.json
-#  lineinfile:
-#    dest: /opt/mattermost/config/config.json
-#    regexp: '"DataSource":'
-#    line: '        "DataSource": "postgres://{{ db_user }}:{{ db_password }}@127.0.0.1:5432/{{ db_name }}?sslmode=disable&connect_timeout=10",'
-#    backrefs: yes 
-
 - name: Create user to run mattermost service.
   user: 
     name: "{{ mattermost_user }}"
     system: yes
     createhome: no        
 
-- name: Apply mattermost config.json template
-  template:
-    src: mattermost-config.json.j2
-    dest: /opt/mattermost/config/config.json
-    owner: "{{ mattermost_user }}"
-    group: "{{ mattermost_user }}"
-    mode: 0644
-  
 - name: Change mattermost directory permissions
   file:
     path: /opt/mattermost
@@ -76,5 +54,7 @@
     enabled: yes
     state: started 
   notify: "restart services"
+
+- include_tasks: build-config-file.yml
 
 # vim:ft=ansible:

@@ -1,0 +1,48 @@
+---
+
+- name: Stop Mattermost service
+  service:
+    name: mattermost
+    state: stopped
+
+- name: Install jq JSON parser
+  package:
+    name: jq
+    state: present
+
+- name: Grab AtRestEncryptKey
+  shell: "cat config.json | jq .SqlSettings.AtRestEncryptKey -r > AtRestEncryptKey && cat AtRestEncryptKey"
+  args:
+    chdir: /opt/mattermost/config
+  register: AtRestEncryptKey
+  changed_when: false
+
+- name: Grab PublicLinkSalt
+  shell: "cat config.json | jq .FileSettings.PublicLinkSalt -r > PublicLinkSalt && cat PublicLinkSalt"
+  args:
+    chdir: /opt/mattermost/config
+  register: PublicLinkSalt
+  changed_when: false
+
+- name: Grab InviteSalt
+  shell: "cat config.json | jq .EmailSettings.InviteSalt -r > InviteSalt && cat InviteSalt"
+  args:
+    chdir: /opt/mattermost/config
+  register: InviteSalt
+  changed_when: false
+
+- name: Apply mattermost config.json template
+  template:
+    src: mattermost-config.json.j2
+    dest: /opt/mattermost/config/config.json
+    owner: "{{ mattermost_user }}"
+    group: "{{ mattermost_user }}"
+    mode: 0644
+
+- name: Start Mattermost service
+  service:
+    name: mattermost
+    state: started
+  notify: "restart services"
+
+# vim:ft=ansible:
