@@ -97,7 +97,7 @@
         "MaxIdleConns": {{ Sql_MaxIdleConns }},
         "MaxOpenConns": {{ Sql_MaxOpenConns }},
         "Trace": {{ Sql_Trace }},
-        "AtRestEncryptKey": "{{ Sql_AtRestEncryptKey }}",
+        "AtRestEncryptKey": "{{ AtRestEncryptKey.stdout }}",
         "QueryTimeout": {{ Sql_QueryTimeout }}
     },
     "LogSettings": {
@@ -125,7 +125,7 @@
         "DriverName": "{{ File_DriverName }}",
         "Directory": "{{ File_Directory }}",
         "EnablePublicLink": {{ File_EnablePublicLink }},
-        "PublicLinkSalt": "{{ File_PublicLinkSalt }}",
+        "PublicLinkSalt": "{{ PublicLinkSalt.stdout }}",
         "InitialFont": "{{ File_InitialFont }}",
         "AmazonS3AccessKeyId": "{{ File_AmazonS3AccessKeyId }}",
         "AmazonS3SecretAccessKey": "{{ File_AmazonS3SecretAccessKey }}",
@@ -152,7 +152,7 @@
         "SMTPServer": "{{ Email_SMTPServer }}",
         "SMTPPort": "{{ Email_SMTPPort }}",
         "ConnectionSecurity": "{{ Email_ConnectionSecurity }}",
-        "InviteSalt": "{{ Email_InviteSalt }}",
+        "InviteSalt": "{{ InviteSalt.stdout }}",
         "SendPushNotifications": {{ Email_SendPushNotifications }},
         "PushNotificationServer": "{{ Email_PushNotificationServer }}",
         "PushNotificationContents": "{{ Email_PushNotificationContents }}",

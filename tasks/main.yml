@@ -34,14 +34,6 @@
     system: yes
     createhome: no        
 
-- name: Apply mattermost config.json template
-  template:
-    src: mattermost-config.json.j2
-    dest: /opt/mattermost/config/config.json
-    owner: "{{ mattermost_user }}"
-    group: "{{ mattermost_user }}"
-    mode: 0644
-  
 - name: Change mattermost directory permissions
   file:
     path: /opt/mattermost
@@ -62,5 +54,7 @@
     enabled: yes
     state: started 
   notify: "restart services"
+
+- include_tasks: build-config-file.yml
 
 # vim:ft=ansible:

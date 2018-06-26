@@ -112,7 +112,7 @@ Sql_DataSourceSearchReplicas: []
 Sql_MaxIdleConns: 20
 Sql_MaxOpenConns: 300
 Sql_Trace: "false"
-Sql_AtRestEncryptKey: ""
+#Sql_AtRestEncryptKey: "" # Set elsewhere
 Sql_QueryTimeout: 30
 
 Log_EnableConsole: "true"
@@ -137,7 +137,7 @@ File_MaxFileSize: 52428800
 File_DriverName: "local"
 File_Directory: "./data/"
 File_EnablePublicLink: "false"
-File_PublicLinkSalt: ""
+#File_PublicLinkSalt: "" Set Elsewhere
 File_InitialFont: "luximbi.ttf"
 File_AmazonS3AccessKeyId: ""
 File_AmazonS3SecretAccessKey: ""
@@ -163,7 +163,7 @@ Email_SMTPPassword: ""
 Email_SMTPServer: ""
 Email_SMTPPort: ""
 Email_ConnectionSecurity: ""
-Email_InviteSalt: ""
+# Email_InviteSalt: "" # Generated Elsewhere
 Email_SendPushNotifications: "false"
 Email_PushNotificationServer: ""
 Email_PushNotificationContents: "generic"
